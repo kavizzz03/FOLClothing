@@ -1,0 +1,105 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#F5F5F5"
+    android:gravity="center">
+
+    <!-- Shop Logo -->
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/fol_logo"
+        android:contentDescription="Shop Logo"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Shop Name -->
+    <TextView
+        android:id="@+id/tv_shop_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FOL Clothing"
+        android:textSize="24sp"
+        android:textColor="#333333"
+        android:textStyle="bold"
+        android:layout_marginBottom="32dp"
+        android:gravity="center"/>
+
+    <!-- Item Name -->
+    <EditText
+        android:id="@+id/et_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Item Name"
+        android:text="Item Name"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_border"/>
+
+    <!-- Item Price -->
+    <EditText
+        android:id="@+id/et_item_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Item Price"
+        android:text="1000"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_border"/>
+
+    <!-- Item Colors -->
+    <EditText
+        android:id="@+id/et_item_colors"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Item Colors"
+        android:text="Red, Blue"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_border"/>
+
+    <!-- Item Sizes -->
+    <EditText
+        android:id="@+id/et_item_sizes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Item Sizes"
+        android:text="M, L"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_border"/>
+
+    <!-- Category Spinner -->
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Item Image URL -->
+    <EditText
+        android:id="@+id/et_item_image_url"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Item Image URL"
+        android:text="http://example.com/image.jpg"
+        android:layout_marginBottom="32dp"
+        android:padding="12dp"
+        android:background="@drawable/edit_text_border"/>
+
+    <!-- Update Button -->
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Item"
+        android:background="@color/colorPrimary"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"/>
+
+</LinearLayout>

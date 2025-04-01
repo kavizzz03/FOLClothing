@@ -1,0 +1,76 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="@android:color/white"
+    android:elevation="5dp"
+    android:layout_margin="5dp">
+
+    <!-- ImageView for displaying item image -->
+    <ImageView
+        android:id="@+id/img_item"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_placeholder"
+        android:scaleType="centerCrop" />
+
+    <!-- TextViews for displaying item information -->
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_colors"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Colors"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_sizes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sizes"
+        android:textSize="16sp"/>
+
+    <TextView
+        android:id="@+id/tv_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:textSize="16sp"/>
+
+    <!-- Button to delete item -->
+    <Button
+        android:id="@+id/btn_delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Button to update item -->
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:backgroundTint="@android:color/holo_blue_light"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>

@@ -1,0 +1,47 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.example.folbeta'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId "com.example.folbeta"
+        minSdk 34
+        targetSdk 35
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+
+
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.google.material
+    implementation libs.volley
+    implementation libs.activity
+    dependencies {
+        implementation 'com.github.bumptech.glide:glide:4.12.0'
+        annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+        implementation 'com.squareup.picasso:picasso:2.71828'
+
+
+
+    }
+}

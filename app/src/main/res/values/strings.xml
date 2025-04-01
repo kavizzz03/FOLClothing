@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FOL beta</string>
+
+    <!-- Add other strings here -->
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string-array name="category_options">
+        <item>Mens</item>
+        <item>Womens</item>
+        <item>Kids</item>
+    </string-array>
+    <string-array name="categories">
+        <item>Mens</item>
+        <item>Womens</item>
+        <item>Kids</item>
+    </string-array>
+
+
+    <string name="delete_product_success">Product deleted successfully</string>
+    <string name="error_loading_products">Error loading products</string>
+    <string name="error_deleting_product">Error deleting product</string>
+
+</resources>
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="veryLightGreen">#81C784</color> <!-- Light green background -->
+    <color name="darkGreen">#1B5E20</color> <!-- Dark green for buttons -->
+    <color name="light_green">#A8D08D</color>
+    <color name="footer_text">#A9A9A9</color>
+
+        <color name="nav_bar_color">#008577</color> <!-- Set your desired color here -->
+        <color name="colorPrimary">#4CAF50</color> <!-- Main color -->
+        <color name="colorPrimaryDark">#388E3C</color> <!-- Dark shade -->
+        <color name="colorAccent">#FF4081</color> <!-- Accent color -->
+
+
+
+    <color name="darker_black">#1C1C1C</color> <!-- Darker Black Color -->
+
+</resources>

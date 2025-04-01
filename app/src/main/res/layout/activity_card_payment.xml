@@ -1,0 +1,55 @@
+<!-- activity_card_payment.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Email Input -->
+    <EditText
+        android:id="@+id/email_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
+
+    <!-- Address Input -->
+    <EditText
+        android:id="@+id/address_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Delivery Address"
+        android:inputType="text" />
+
+    <!-- Card Number Input -->
+    <EditText
+        android:id="@+id/card_number_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Card Number"
+        android:inputType="textLongMessage"
+        android:maxLength="16" />
+
+    <!-- Expiry Date Input -->
+    <EditText
+        android:id="@+id/expiry_date_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Expiry Date (MM/YY)"
+        android:inputType="text" />
+
+    <!-- CVV Input -->
+    <EditText
+        android:id="@+id/cvv_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CVV"
+        android:inputType="number" />
+
+    <!-- Submit Button -->
+    <Button
+        android:id="@+id/submit_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit Payment" />
+</LinearLayout>

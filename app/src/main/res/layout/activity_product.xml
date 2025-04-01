@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- Toolbar for displaying the app name and logo -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorPrimary"
+        android:titleTextColor="@android:color/white"
+        android:padding="10dp"/>
+
+    <!-- RecyclerView to display products -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical"/>
+
+    <!-- Button to go to CartActivity -->
+    <Button
+        android:id="@+id/btn_go_to_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to Cart"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
+        android:padding="10dp"
+        android:layout_marginTop="10dp"/>
+</LinearLayout>

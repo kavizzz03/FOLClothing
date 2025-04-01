@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#e8f5e9"
+    android:padding="20dp">
+
+    <!-- FOL Clothing Logo -->
+    <ImageView
+        android:id="@+id/img_fol_logo"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@mipmap/fol_logo"
+        android:contentDescription="FOL Clothing Logo"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Welcome Text -->
+    <TextView
+        android:id="@+id/txt_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to FOL Clothing"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#388E3C"
+        android:gravity="center"/>
+
+</LinearLayout>
