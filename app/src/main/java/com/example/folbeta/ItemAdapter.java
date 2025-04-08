@@ -123,12 +123,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                 }
                 reader.close();
 
+                // Check if the result is success
                 mainHandler.post(() -> {
-                    Toast.makeText(context, result.toString(), Toast.LENGTH_LONG).show();
-                    if (result.toString().trim().equals("Item deleted successfully!")) {
+                    String response = result.toString().trim();
+                    if (response.equals("Item deleted successfully!")) {
                         itemList.remove(position);
                         notifyItemRemoved(position);
                         notifyItemRangeChanged(position, itemList.size());
+                        Toast.makeText(context, response, Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(context, "Failed to delete item", Toast.LENGTH_LONG).show();
                     }
                 });
             } catch (Exception e) {

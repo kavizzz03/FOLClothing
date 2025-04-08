@@ -1,23 +1,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#f8f8f8">
 
+    <!-- Heading -->
+    <TextView
+        android:id="@+id/cart_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Shopping Cart"
+        android:textSize="24sp"
+        android:textColor="#2D572C"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Cart List -->
     <ListView
         android:id="@+id/cart_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@android:color/darker_gray"
+        android:dividerHeight="0.5dp"/>
 
+    <!-- Total Price -->
     <TextView
         android:id="@+id/total_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total: LKR 0"
-        android:textSize="18sp" />
+        android:textSize="20sp"
+        android:textColor="#2D572C"
+        android:padding="16dp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"/>
 
+    <!-- Pay Button -->
     <Button
         android:id="@+id/pay_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Pay Now" />
+        android:text="Pay Now"
+        android:textSize="18sp"
+        android:textColor="#fff"
+        android:backgroundTint="#4CAF50"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="32dp"/>
+
 </LinearLayout>

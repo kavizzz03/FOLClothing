@@ -3,51 +3,84 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="#F9F9F9"
+    android:scrollbars="vertical">
 
+    <!-- Title: Email Input Section -->
     <TextView
         android:id="@+id/email_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your email:"
-        android:textSize="16sp"
+        android:text="Enter Your Email Address"
+        android:textSize="18sp"
+        android:textColor="#212121"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
+    <!-- Email Input Field -->
     <EditText
         android:id="@+id/email_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Email Address"
         android:inputType="textEmailAddress"
         android:textSize="16sp"
-        android:layout_marginBottom="16dp" />
+        android:padding="12dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/rounded_edittext_bg"
+        android:textColor="#212121"
+        android:importantForAccessibility="yes"
+        android:contentDescription="Email input field" />
 
+    <!-- Title: Bank Slip Upload Section -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upload your bank slip:"
-        android:textSize="16sp"
+        android:text="Upload Your Bank Slip"
+        android:textSize="18sp"
+        android:textColor="#212121"
+        android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
+    <!-- Bank Slip Image (Preview) -->
     <ImageView
         android:id="@+id/slip_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="Bank Slip" />
+        android:layout_marginBottom="24dp"
+        android:contentDescription="Preview of uploaded bank slip"
+        android:background="@color/colorGray"
+        android:scaleType="centerCrop"
+        android:importantForAccessibility="yes" />
 
+    <!-- Upload Button with Icon -->
     <Button
         android:id="@+id/upload_slip_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upload Slip"
-        android:layout_marginBottom="16dp" />
+        android:text="Upload Bank Slip"
+        android:textSize="16sp"
+        android:layout_marginBottom="24dp"
+        android:padding="12dp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorPrimary"
+        android:drawableLeft="@drawable/ic_upload"
+        android:drawablePadding="8dp"
+        android:importantForAccessibility="yes"
+        android:contentDescription="Button to upload bank slip" />
 
+    <!-- Submit Button -->
     <Button
         android:id="@+id/submit_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:textColor="@android:color/white"
-        android:background="@android:color/holo_green_light" />
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:padding="16dp"
+        android:importantForAccessibility="yes"
+        android:contentDescription="Submit payment and bank slip" />
+
 </LinearLayout>

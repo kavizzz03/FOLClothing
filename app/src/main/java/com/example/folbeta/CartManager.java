@@ -29,4 +29,8 @@ public class CartManager {
         Log.d("CartDebug", "Retrieving cart items. Total: " + cartItems.size());
         return cartItems;
     }
+    public void clearCart() {
+        cartItems.clear();
+    }
+
 }

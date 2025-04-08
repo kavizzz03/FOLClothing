@@ -1,19 +1,32 @@
 package com.example.folbeta;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -26,18 +39,22 @@ public class ProductActivity extends AppCompatActivity {
     private ProductAdapter productAdapter;
     private List<Product> productList;
     private Button btnGoToCart;
+    private Spinner categorySpinner;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private static final String TAG = "ProductActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
 
-        // Setup the Toolbar with FOL Clothing and logo
+        // Initialize SwipeRefreshLayout
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("FOL Clothing");
-        // You can also set an icon/logo here if needed:
-        // toolbar.setLogo(R.drawable.logo); // Assuming you have a logo file
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -46,19 +63,57 @@ public class ProductActivity extends AppCompatActivity {
         recyclerView.setAdapter(productAdapter);
 
         btnGoToCart = findViewById(R.id.btn_go_to_cart);
-        btnGoToCart.setOnClickListener(v -> {
-            Intent intent = new Intent(ProductActivity.this, CartActivity.class);
-            startActivity(intent);
+        btnGoToCart.setOnClickListener(v -> startActivity(new Intent(ProductActivity.this, CartActivity.class)));
+
+        categorySpinner = findViewById(R.id.spinner_category);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.category_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categorySpinner.setAdapter(adapter);
+
+        categorySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedCategory = parent.getItemAtPosition(position).toString();
+                loadProducts(selectedCategory);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do nothing
+            }
         });
 
-        loadProducts();
+        // Initialize the swipe-to-refresh action
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            String selectedCategory = categorySpinner.getSelectedItem().toString();
+            loadProducts(selectedCategory);
+        });
+
+        loadProducts("All"); // Initial load
     }
 
-    private void loadProducts() {
-        new GetProductsTask().execute();
+    private void loadProducts(String categoryFilter) {
+        if (!isNetworkAvailable()) {
+            Toast.makeText(this, "No internet connection!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        new GetProductsTask(categoryFilter).execute();
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
     private class GetProductsTask extends AsyncTask<Void, Void, String> {
+        private final String categoryFilter;
+
+        public GetProductsTask(String categoryFilter) {
+            this.categoryFilter = categoryFilter;
+        }
+
         @Override
         protected String doInBackground(Void... voids) {
             try {
@@ -73,58 +128,77 @@ public class ProductActivity extends AppCompatActivity {
                 reader.close();
                 return result.toString();
             } catch (Exception e) {
+                Log.e(TAG, "Error loading products", e);
                 return null;
             }
         }
 
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
             if (s != null) {
                 try {
                     JSONArray jsonArray = new JSONArray(s);
+                    productList.clear();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject obj = jsonArray.getJSONObject(i);
-                        productList.add(new Product(
-                                obj.getInt("id"),
-                                obj.getString("name"),
-                                obj.getDouble("price"),
-                                obj.getString("colors"),
-                                obj.getString("sizes"),
-                                obj.getString("category"),
-                                obj.getString("image_url")
-                        ));
+                        String category = obj.getString("category");
+
+                        if (categoryFilter.equals("All") || category.equalsIgnoreCase(categoryFilter)) {
+                            String imageUrl = "https://modaloku.cpsharetxt.com/" + obj.getString("image_url").trim();
+                            productList.add(new Product(
+                                    obj.getInt("id"),
+                                    obj.getString("name"),
+                                    obj.getDouble("price"),
+                                    obj.getString("colors"),
+                                    obj.getString("sizes"),
+                                    category,
+                                    imageUrl
+                            ));
+                        }
                     }
                     productAdapter.notifyDataSetChanged();
                 } catch (JSONException e) {
-                    Toast.makeText(ProductActivity.this, "Error parsing JSON!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ProductActivity.this, "Error parsing product data", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "JSON Error", e);
                 }
+            } else {
+                Toast.makeText(ProductActivity.this, "Failed to load products", Toast.LENGTH_SHORT).show();
             }
+
+            // Stop the refresh animation
+            swipeRefreshLayout.setRefreshing(false);
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu); // Inflate the extended menu
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.add_to_cart) {
-
-                // Redirect to CartActivity
-                Intent cartIntent = new Intent(ProductActivity.this, CartActivity.class);
-                startActivity(cartIntent);
-                return true;}
-        if(item.getItemId()==R.id.admin_panel){
-
-                // Redirect to LoginActivity
-                Intent loginIntent = new Intent(ProductActivity.this, LoginActivity.class);
-                startActivity(loginIntent);
-                return true;}
-            else{
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.add_to_cart) {
+            startActivity(new Intent(ProductActivity.this, CartActivity.class));
+            return true;
         }
+        if (item.getItemId() == R.id.admin_panel) {
+            startActivity(new Intent(ProductActivity.this, LoginActivity.class));
+            return true;
+        }
+        if (item.getItemId() == R.id.view_website) {
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://modaloku.cpsharetxt.com/"));
+            startActivity(browserIntent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    // Override onBackPressed to handle back button without closing the app
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // Do not close the app, just go back to the previous activity
     }
 }

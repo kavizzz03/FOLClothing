@@ -1,14 +1,14 @@
 package com.example.folbeta;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
@@ -41,7 +41,7 @@ public class CartActivity extends AppCompatActivity {
         for (Product product : cartItems) {
             total += product.getPrice() * product.getQuantity();
         }
-        totalPrice.setText("Total: LKR " + total);
+        totalPrice.setText("Total: LKR " + String.format("%.2f", total));
     }
 
     private void showPaymentOptions() {
@@ -49,9 +49,23 @@ public class CartActivity extends AppCompatActivity {
         builder.setTitle("Select Payment Method")
                 .setItems(new String[]{"Cash on Delivery", "Bank Deposit", "Card Payment"},
                         (dialog, which) -> {
-                            if (which == 0) startActivity(new Intent(this, CashOnDeliveryActivity.class));
-                            else if (which == 1) startActivity(new Intent(this, BankDepositActivity.class));
-                            else startActivity(new Intent(this, CardPaymentActivity.class));
+                            // Clear the cart
+                            CartManager.getInstance().clearCart();
+                            cartAdapter.notifyDataSetChanged();
+                            updateTotalPrice();
+
+                            // Navigate to appropriate payment screen
+                            Intent intent;
+                            if (which == 0) {
+                                intent = new Intent(this, CashOnDeliveryActivity.class);
+                            } else if (which == 1) {
+                                intent = new Intent(this, BankDepositActivity.class);
+                            } else {
+                                intent = new Intent(this, CardPaymentActivity.class);
+                            }
+
+                            startActivity(intent);
+                            finish(); // optional, closes CartActivity
                         })
                 .show();
     }

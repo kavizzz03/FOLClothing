@@ -3,45 +3,138 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="20dp"
+    android:background="#F9F9F9">
 
-    <EditText
-        android:id="@+id/email_input"
+    <!-- Title Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer Details"
+        android:textSize="20sp"
+        android:textColor="#333333"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <!-- Email Input -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_email"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="Email Icon"/>
+        <EditText
+            android:id="@+id/email_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Email Address"
+            android:inputType="textEmailAddress"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="#333333"/>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/contact_number_input"
+    <!-- Contact Number Input -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Contact Number"
-        android:inputType="phone"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_phone"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="Phone Icon"/>
+        <EditText
+            android:id="@+id/contact_number_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Contact Number"
+            android:inputType="phone"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="#333333"/>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/address_input"
+    <!-- Address Input -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Address"
-        android:inputType="text"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_location"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="Address Icon"/>
+        <EditText
+            android:id="@+id/address_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Delivery Address"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="#333333"/>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/hometown_input"
+    <!-- Hometown Input -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Hometown"
-        android:inputType="text"/>
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_address"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="Hometown Icon"/>
+        <EditText
+            android:id="@+id/hometown_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Hometown"
+            android:inputType="text"
+            android:textSize="16sp"
+            android:paddingLeft="8dp"
+            android:background="@drawable/rounded_edittext_bg"
+            android:textColor="#333333"/>
+    </LinearLayout>
 
+    <!-- Province Spinner -->
     <Spinner
         android:id="@+id/province_spinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/rounded_spinner_bg"/>
 
+    <!-- Submit Button -->
     <Button
         android:id="@+id/submit_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Place Order"/>
+        android:layout_height="50dp"
+        android:text="Place Order"
+        android:textColor="#FFFFFF"
+        android:background="@color/colorAccent"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:importantForAccessibility="yes"/>
 
 </LinearLayout>

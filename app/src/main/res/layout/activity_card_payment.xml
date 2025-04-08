@@ -1,55 +1,148 @@
-<!-- activity_card_payment.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="#F1F1F1"
+    android:scrollbars="vertical">
+
+    <!-- Title -->
+<TextView
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:text="Enter Payment Details"
+android:textSize="20sp"
+android:textColor="#212121"
+    android:layout_marginBottom="16dp"
+    android:textStyle="bold"
+    android:gravity="center"/>
 
     <!-- Email Input -->
-    <EditText
-        android:id="@+id/email_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_marginBottom="12dp">
+<ImageView
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_email" />
+<EditText
+    android:id="@+id/email_input"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:hint="Email Address"
+    android:inputType="textEmailAddress"
+    android:paddingLeft="8dp"
+    android:background="@drawable/rounded_edittext_bg"
+    android:textColor="#212121"
+android:importantForAccessibility="yes" />
+</LinearLayout>
 
     <!-- Address Input -->
-    <EditText
-        android:id="@+id/address_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Delivery Address"
-        android:inputType="text" />
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_marginBottom="12dp">
+<ImageView
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_address" />
+<EditText
+    android:id="@+id/address_input"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:hint="Delivery Address"
+    android:inputType="text"
+    android:paddingLeft="8dp"
+    android:background="@drawable/rounded_edittext_bg"
+    android:textColor="#212121"
+android:importantForAccessibility="yes" />
+</LinearLayout>
 
     <!-- Card Number Input -->
-    <EditText
-        android:id="@+id/card_number_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Card Number"
-        android:inputType="textLongMessage"
-        android:maxLength="16" />
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_marginBottom="12dp">
+<ImageView
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_credit_card" />
+<EditText
+    android:id="@+id/card_number_input"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:hint="Card Number"
+    android:inputType="numberPassword"
+    android:maxLength="16"
+    android:paddingLeft="8dp"
+    android:background="@drawable/rounded_edittext_bg"
+    android:textColor="#212121"
+android:importantForAccessibility="yes" />
+</LinearLayout>
 
     <!-- Expiry Date Input -->
-    <EditText
-        android:id="@+id/expiry_date_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Expiry Date (MM/YY)"
-        android:inputType="text" />
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_marginBottom="12dp">
+<ImageView
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_expiry" />
+<EditText
+    android:id="@+id/expiry_date_input"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:hint="Expiry Date (MM/YY)"
+    android:inputType="text"
+    android:paddingLeft="8dp"
+    android:background="@drawable/rounded_edittext_bg"
+    android:textColor="#212121"
+android:importantForAccessibility="yes" />
+</LinearLayout>
 
     <!-- CVV Input -->
-    <EditText
-        android:id="@+id/cvv_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="CVV"
-        android:inputType="number" />
+<LinearLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="horizontal"
+android:layout_marginBottom="16dp">
+<ImageView
+    android:layout_width="24dp"
+    android:layout_height="24dp"
+    android:src="@drawable/ic_cvv" />
+<EditText
+    android:id="@+id/cvv_input"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:hint="CVV"
+    android:inputType="numberPassword"
+    android:maxLength="3"
+    android:paddingLeft="8dp"
+    android:background="@drawable/rounded_edittext_bg"
+    android:textColor="#212121"
+android:importantForAccessibility="yes" />
+</LinearLayout>
 
     <!-- Submit Button -->
-    <Button
-        android:id="@+id/submit_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit Payment" />
-</LinearLayout>
+<Button
+android:id="@+id/submit_button"
+android:layout_width="match_parent"
+android:layout_height="48dp"
+android:text="Submit Payment"
+android:textColor="#FFFFFF"
+android:background="#009688"
+    android:textSize="18sp"
+    android:layout_marginTop="24dp"
+    android:importantForAccessibility="yes" />
+    </LinearLayout>

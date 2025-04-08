@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         btnViewWebsite.setOnClickListener(v -> {
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://yourwebsite.com"));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://modaloku.cpsharetxt.com/"));
             startActivity(browserIntent);
         });
     }
@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity {
         }
         if(item.getItemId()==R.id.action_view_website) {
 
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://yourwebsite.com"));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://modaloku.cpsharetxt.com/"));
             startActivity(browserIntent);
             return true;
         }

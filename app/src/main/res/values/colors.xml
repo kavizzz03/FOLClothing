@@ -11,6 +11,7 @@
         <color name="colorPrimary">#4CAF50</color> <!-- Main color -->
         <color name="colorPrimaryDark">#388E3C</color> <!-- Dark shade -->
         <color name="colorAccent">#FF4081</color> <!-- Accent color -->
+    <color name="colorGray">#E0E0E0</color>
 
 
 
